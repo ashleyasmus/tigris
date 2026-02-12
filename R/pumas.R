@@ -110,9 +110,12 @@ pumas <- function(state = NULL, cb = FALSE, year = NULL, ...) {
             if (year == 2013) url <- gsub("shp/", "", url)
         }
     } else {
+        
+        puma_dir <- if (year > 2021) "PUMA20" else "PUMA"
         url <- sprintf(
-            "https://www2.census.gov/geo/tiger/TIGER%s/PUMA/tl_%s_%s_puma%s.zip",
+            "https://www2.census.gov/geo/tiger/TIGER%s/%s/tl_%s_%s_puma%s.zip",
             cyear,
+            puma_dir,
             cyear,
             state,
             suf
